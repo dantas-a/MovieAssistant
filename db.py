@@ -1,7 +1,6 @@
 from astrapy import DataAPIClient
 from dotenv import load_dotenv
 import streamlit as st
-import os
 
 load_dotenv()
 
@@ -17,14 +16,10 @@ def get_db() :
     return db
 
 db = get_db()
-collection_names = ["personal_data","notes"]
+# create the collection if it doesn't exist
+try:
+    db.create_collection("personal_data")
+except:
+    pass
 
-for collection in collection_names:
-    try:
-        db.create_collection(collection)
-    except:
-        pass
-    
 personal_data_collection = db.get_collection("personal_data")
-notes_collection = db.get_collection("notes")
-

@@ -368,7 +368,7 @@
                 "trace_as_input": true,
                 "trace_as_metadata": true,
                 "type": "str",
-                "value": ""
+                "value": "question"
               }
             },
             "tool_mode": false
@@ -386,7 +386,7 @@
           "x": -5.587066241948037,
           "y": 635.8575660289858
         },
-        "selected": true,
+        "selected": false,
         "type": "genericNode"
       },
       {
@@ -473,7 +473,7 @@
                 "trace_as_input": true,
                 "trace_as_metadata": true,
                 "type": "str",
-                "value": ""
+                "value": "profile"
               }
             },
             "tool_mode": false
@@ -525,7 +525,6 @@
             "is_input": null,
             "is_output": null,
             "legacy": false,
-            "lf_version": "1.5.1",
             "metadata": {},
             "minimized": false,
             "name": "",
@@ -631,7 +630,7 @@
                 "tool_mode": false,
                 "trace_as_input": true,
                 "type": "prompt",
-                "value": "Based on the following user profile, please recommend a movie that matches their profile and their goals. Ensure that the response is the name of the movie with no additional explanations or text.\n\nUser Profile : {profile}\n\nGoals : {goals}\n\nOutput Format:\nDo not include any additional text or explanations, only the name of the movie\n\nOutput Format:\nname of the movie\n\nNotes:\nSimply give me a valid string with no formatting or display options."
+                "value": "Given the following user profile and goals, recommend a movie that best matches them.  \nThe user profile includes: name, age, nationality, gender, movie knowledge, and preferred movie types.  \nYou must satisfy the goals of the user, else he will quit the app.\n\nUser Profile: {profile}  \n\nGoals: {goals}  \n\nInstructions:  \n- Respond with only the name of one movie.  \n- Do not include any explanations, formatting, punctuation beyond the title itself, or additional text.  \n\nOutput:  \n<movie name>"
               },
               "tool_placeholder": {
                 "_input_type": "MessageTextInput",
@@ -720,7 +719,7 @@
             ],
             "frozen": false,
             "icon": "Ollama",
-            "last_updated": "2025-09-17T13:48:43.662Z",
+            "last_updated": "2025-09-18T11:28:06.433Z",
             "legacy": false,
             "lf_version": "1.5.1",
             "metadata": {
@@ -1583,7 +1582,7 @@
             ],
             "frozen": false,
             "icon": "Ollama",
-            "last_updated": "2025-09-17T13:48:43.759Z",
+            "last_updated": "2025-09-18T11:28:06.461Z",
             "legacy": false,
             "lf_version": "1.5.1",
             "metadata": {
@@ -2436,7 +2435,6 @@
             "is_input": null,
             "is_output": null,
             "legacy": false,
-            "lf_version": "1.5.1",
             "metadata": {},
             "minimized": false,
             "name": "",
@@ -2564,7 +2562,7 @@
                 "tool_mode": false,
                 "trace_as_input": true,
                 "type": "prompt",
-                "value": "You are an expert in cinema who warmly recommends movies to people who aren’t sure what to watch but have a vague idea of what they might enjoy. \n\nBased on the following facts and link it with the user profile, write a concise and engaging recommendation for the movie. If possible, include the director, screenwriter, and main actors, making sure to match each actor with the correct character. If the movie has received awards or prizes, highlight them. \n\nFacts: {facts}\n\nUser Goals: {Goals} \n\nUser Profile: {Profile} \n\nOutput Requirements: \nWrite in a warm, approachable, and expert tone — as if you’re helping someone choose a film for the evening. \nDon’t just summarize; frame the movie as a recommendation, explaining why it’s worth watching. \nMention actors only if the facts provide them, but never link them to specific characters \n\nNotes: \nOnly use the facts explicitly provided; do not invent or assume missing details. \nAvoid redundancy: mention each fact once in the most natural place. \nBalance authority and friendliness: sound like a film critic who loves sharing recommendations, not like a press release. \nOne or two paragraphs are enough to spark interest.\n\n\n"
+                "value": "You are an expert in cinema who warmly recommends movies to people who aren’t sure what to watch but have a vague idea of what they might enjoy. \n\nBased on the following facts and link it with the user profile (name, age, nationality, gender, movie knowledge, and preferred movie types), write a concise and engaging recommendation for the movie. If possible, include the director, screenwriter, and main actors, making sure to match each actor with the correct character. If the movie has received awards or prizes, highlight them. \n\nFacts: {facts}\n\nUser Goals: {Goals} \n\nUser Profile: {Profile} \n\nOutput Requirements: \nWrite in a warm, approachable, and expert tone — as if you’re helping someone choose a film for the evening. \nDon’t just summarize; frame the movie as a recommendation, explaining why it’s worth watching. \nMention actors only if the facts provide them, but never link them to specific characters \n\nNotes: \nOnly use the facts explicitly provided; do not invent or assume missing details. \nAvoid redundancy: mention each fact once in the most natural place. \nBalance authority and friendliness: sound like a film critic who loves sharing recommendations, not like a press release. \nOne or two paragraphs are enough to spark interest.\n\n\n"
               },
               "tool_placeholder": {
                 "_input_type": "MessageTextInput",
@@ -2605,7 +2603,7 @@
           "x": 1874.7921004464895,
           "y": 683.4745850736878
         },
-        "selected": false,
+        "selected": true,
         "type": "genericNode"
       },
       {
@@ -2715,9 +2713,9 @@
       }
     ],
     "viewport": {
-      "x": 135.98670426448314,
-      "y": -157.29423815736686,
-      "zoom": 0.8293608808157751
+      "x": 138.00271918091494,
+      "y": 95.33631285776232,
+      "zoom": 0.5406119952418202
     }
   },
   "description": "You don't know what movie to watch. I'll recommend one for you !",

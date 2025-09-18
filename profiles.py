@@ -1,4 +1,4 @@
-from db import personal_data_collection, notes_collection  
+from db import personal_data_collection
 
 def get_values(_id):
     return {
@@ -10,8 +10,7 @@ def get_values(_id):
             "gender": "Male",
             "level": "Beginner",
             "movie_types": []
-        },
-        "goals": ["Discover a new movie"]
+        }
     }
 
 def create_profile(_id):
@@ -21,6 +20,3 @@ def create_profile(_id):
 
 def get_profile(_id):
     return personal_data_collection.find_one({"_id": {"$eq": _id}})
-
-def get_notes(_id):
-    return list(notes_collection.find({"user_id": {"$eq": _id}}))

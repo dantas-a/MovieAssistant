@@ -1,6 +1,7 @@
 import streamlit as st
-from profiles import create_profile, get_notes, get_profile
-from form_submit import update_personal_info, add_note,delete_note 
+from profiles import create_profile,  get_profile
+from form_submit import update_personal_info
+from ai import ask_ai
 
 st.title("Personal Movie Recommendation App")
 
@@ -14,6 +15,7 @@ def personal_data_form():
         name = st.text_input("Name",value=profile["general"]["name"])
         age = st.number_input("Age", min_value=1, max_value=120, step=1,value=profile["general"]["age"])
         nationality = st.text_input("Nationality",value=profile["general"]["nationality"])
+        
         genders = ["Male","Female","Other"]
         gender = st.radio('Gender',genders,genders.index(profile["general"].get("gender","Male")))
         
@@ -21,7 +23,7 @@ def personal_data_form():
         level = st.selectbox("Movie Enthusiast Level", levels,index=levels.index(profile["general"].get("level","Beginner")))
         
         types = ("Action", "Comedy", "Drama", "Horror", "Sci-Fi", "Romance", "Documentary","Thriller", "Animation", "Fantasy")
-        movie_types = st.multiselect("Preferred Movie Types", types)
+        movie_types = st.multiselect("Preferred Movie Types", types, default=profile["general"].get("movie_types", []))
         
         personal_data_submit = st.form_submit_button("Save")
         if personal_data_submit:
@@ -31,7 +33,17 @@ def personal_data_form():
                     st.success("Data saved successfully!")
             else :
                 st.warning("Please fill in all fields.")  
-            
+       
+@st.fragment
+def ask_ai_func():
+    profile = st.session_state.profile
+    st.subheader('AI Movie Recommendations')
+    user_question = st.text_input("Ask for movie recommendations or preferences: ")
+    if st.button("Ask AI"):
+        with st.spinner():
+            result = ask_ai(profile.get("general"),user_question)
+            st.write(result)
+
 def forms():
     if "profile" not in st.session_state:
         profile_id = 1
@@ -42,10 +54,8 @@ def forms():
         st.session_state.profile = profile
         st.session_state.profile_id = profile_id
         
-    if "notes" not in st.session_state:
-        st.session_state.notes = get_notes(st.session_state.profile_id)
-        
     personal_data_form() 
+    ask_ai_func()
     
 if __name__ == "__main__":
     forms()                
