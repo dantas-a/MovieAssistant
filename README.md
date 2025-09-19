@@ -69,7 +69,12 @@ MovieAssistant is a personal movie recommendation app powered by AI, designed to
 
 ## Exemples
 
+![Test 1](png/Personal_Data_Form_1.png)
+![Test 1](png/AI_Recommendation_1.png)
+![Test 2](png/Personal_Data_Form_2.png)
+![Test 2](png/AI_Recommendation_2.png)
 
+As you can see, the recommendation matches the user profile and the goal. However, we can sometimes see some hallucinations of the model. Here we use a llama3.2:1b which is a "small" model.
 
 ---
 
